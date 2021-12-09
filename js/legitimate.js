@@ -1,0 +1,1 @@
+console.log("I am a legitimate script, so CSP should allow me to execute ...");

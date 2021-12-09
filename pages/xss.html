@@ -1,0 +1,15 @@
+<h1>Preventing XSS with CSP</h1>
+
+<!-- Legitimate script -->
+<script src="/js/legitimate.js"></script>
+
+<!-- Injected inline code -->
+<img src="none.png" onerror="console.log('Malicious inline code executing ...')">
+
+<!-- Injected script block -->
+<script>
+    console.log("Malicious script block executing ...");
+</script>
+
+<!-- Injected remote code file -->
+<script src="http://maliciousfood.com:3000/js/evil.js"></script>
