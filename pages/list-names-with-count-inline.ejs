@@ -1,0 +1,13 @@
+<html>
+    <body>
+        <h3>List of names</h3>
+        <ul>
+            <% for(let i = 0; i < data.length; i++) { %>
+                <!-- This line of code is insecure, causing an XSS vulnerability -->
+                <li><%- data[i] %></li>
+             <% } %>
+        </ul>
+        <button id="count" onclick="alert(`There are a bunch of names in this list`)">Count the names</button>
+        <script src="js/legitimate.js"></script>
+    </body>
+</html>
