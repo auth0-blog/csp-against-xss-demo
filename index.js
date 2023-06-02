@@ -65,6 +65,41 @@ app.get("/hashes", expressCspHeader(csp_hashes), (req, res) => {
 });
 
 
+/***********************
+ * Demo: Remote Hashes *
+ ***********************/
+
+// Define the CSP policy for this endpoint
+const csp_remotehashes = {
+    directives: {
+        'script-src': ["'sha384-MyQDxbXeTNqr9AydtEN2RAvMFIyRKvm/tvnBiuTT5m4kRjCEv3aKhpdPjiCWsijN'"]
+    }
+}
+
+// Serve the endpoint with CSP enabled
+app.get("/remotehashes", expressCspHeader(csp_remotehashes), (req, res) => {
+    // Render the EJS page with the data
+    res.render(`${PAGES}/list-names-with-sri`, { data: data });
+});
+
+
+/***********************
+ * Demo: Inline Hashes *
+ ***********************/
+
+// Define the CSP policy for this endpoint
+const csp_inlinehashes = {
+    directives: {
+        'script-src-elem': ["'self'"],
+        'script-src-attr': ["'unsafe-hashes'", "'sha256-iNfncdJVzRQiUdrkc1Sv8Cg1pdqfTV6wIxP9W3/RMrw='"]
+    }
+}
+
+// Serve the endpoint with CSP enabled
+app.get("/inlinehashes", expressCspHeader(csp_inlinehashes), (req, res) => {
+    // Render the EJS page with the data
+    res.render(`${PAGES}/list-names-with-count-inline`, { data: data });
+});
 
 
 /****************

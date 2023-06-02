@@ -1,0 +1,12 @@
+<html>
+    <body>
+        <h3>List of names</h3>
+        <ul>
+            <% for(let i = 0; i < data.length; i++) { %>
+                <!-- This line of code is insecure, causing an XSS vulnerability -->
+                <li><%- data[i] %></li>
+             <% } %>
+        </ul>
+        <script src="js/legitimate.js" integrity="sha384-MyQDxbXeTNqr9AydtEN2RAvMFIyRKvm/tvnBiuTT5m4kRjCEv3aKhpdPjiCWsijN" crossorigin="anonymous"></script>
+    </body>
+</html>
